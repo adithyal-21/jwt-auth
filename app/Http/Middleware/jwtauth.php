@@ -28,14 +28,14 @@ class jwtauth
             if($e instanceof TokenExpiredException)
             {
                
-                return response()->json(['success'=>'false','status'=>' expired'],401);
+                return response()->json(['success'=>'false','status'=>' expired'],403);
             }
             elseif($e instanceof TokenInvalidException)
             {
-                return response()->json(['success'=>'false','message'=>'token invalid'],401);
+                return response()->json(['success'=>'false','message'=>'token invalid'],403);
             }
             else{
-                return response()->json(['success'=>'false','message'=>'token not found'],401);
+                return response()->json(['success'=>'false','message'=>'token not found'],403);
             }
         }
         return $next($request);
